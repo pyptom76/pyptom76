@@ -1,0 +1,319 @@
+mixed-port: 7890
+allow-lan: false
+mode: rule
+global-client-fingerprint: firefox
+log-level: info
+ipv6: true
+external-controller: 127.0.0.1:9090
+geox-url:
+  geoip: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
+  geosite: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
+  mmdb: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.metadb"
+# dns:
+  # enable: true
+  # listen: 0.0.0.0:53
+  # enhanced-mode: fake-ip
+  # nameserver:
+    # - 8.8.8.8
+    # - 1.1.1.1
+    # - 119.29.29.29
+    # - 223.5.5.5
+proxies:
+  - {name: lunes.pyptom@hotmail, type: vless, server: node24.lunes.host, port: 3147, uuid: 8c94dfd8-52dd-451c-8c85-26770cd41768, network: ws, ws-path: /vless, ws-headers: {Host: node24.lunes.host}}  
+  - {name: "BPB", type: trojan, server: www.vpslook.com, port: 443, password: bpb-trojan, udp: true, skip-cert-verify: true, sni: path3.485583.xyz, network: ws, ws-opts: {path: /tr?ed=2560, headers: {host: path3.485583.xyz}}}
+proxy-providers:
+  linkvws-sub:
+    type: http
+    path: ./profiles/proxies/linkvws.yaml
+    url: https://raw.githubusercontent.com/pyptom76/pyptom76/main/linkvws.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      url: http://www.youtube.com/generate_204
+      interval: 120
+  dd24-sub:
+    type: http
+    path: ./profiles/proxies/domain.txt
+    url: https://raw.githubusercontent.com/pyptom76/pyptom76/main/domain.txt
+    interval: 3600
+    health-check:
+      enable: true
+      url: http://www.youtube.com/generate_204
+      interval: 120
+  test-local:
+    type: file
+    path: ./profiles/proxies/test.txt
+    health-check:
+      enable: true
+      url: http://www.youtube.com/generate_204
+      interval: 120
+  test-local-yaml:
+    type: file
+    path: ./profiles/proxies/test.yaml
+    health-check:
+      enable: true
+      url: http://www.youtube.com/generate_204
+      interval: 120
+  rules-sub:
+    type: http
+    path: ./profiles/proxies/my-rules.yaml
+    url: https://raw.githubusercontent.com/pyptom76/pyptom76/main/rules.txt
+    interval: 86400
+    health-check:
+      enable: true
+      url: http://www.google.com/generate_204
+      interval: 300
+  toys-sub:
+    type: http
+    path: ./profiles/proxies/my-raw.yaml
+    exclude-filter: "back4app"
+    url: https://raw.githubusercontent.com/pyptom76/pyptom76/main/raw.txt
+    interval: 86400
+    health-check:
+      enable: true
+      url: http://www.google.com/generate_204
+      interval: 300
+  cloudflare-sub:
+    type: http
+    path: ./profiles/proxies/my-cloudflare.yaml
+    url: https://raw.githubusercontent.com/pyptom76/pyptom76/main/cloudflare.txt
+    interval: 86400
+    health-check:
+      enable: true
+      url: http://www.google.com/generate_204
+      interval: 300
+  dongtaiwang-misaka-hy:
+    type: http
+    exclude-type: "vmess|vless|wireguard|ss|trojan|ssr"
+    path: ./profiles/proxies/dongtaiwang-misaka.yaml
+    url: https://raw.githubusercontent.com/Misaka-blog/chromego_merge/main/sub/merged_proxies_new.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      url: http://www.google.com/generate_204
+      interval: 300
+  daily-local:
+    type: file
+    path: ./profiles/proxies/daily.txt
+    health-check:
+      enable: true
+      url: http://www.youtube.com/generate_204
+      interval: 120
+  daily-local-yaml:
+    type: file
+    path: ./profiles/proxies/daily.yaml
+    health-check:
+      enable: true
+      url: http://www.youtube.com/generate_204
+      interval: 120
+  barry-local:
+    type: file
+    path: ./profiles/proxies/barry-far.txt
+    health-check:
+      enable: true
+      url: http://www.youtube.com/generate_204
+      interval: 120
+  barry-local-yaml:
+    type: file
+    path: ./profiles/proxies/barry-far.yaml
+    health-check:
+      enable: true
+      url: http://www.youtube.com/generate_204
+      interval: 120
+  manually-local:
+    type: file
+    path: ./profiles/proxies/manually.txt
+    exclude-filter: "yaml"
+    interval: 300
+    health-check:
+      enable: true
+      url: http://www.youtube.com/generate_204
+      interval: 120
+  manually-local-yaml:
+    type: file
+    path: ./profiles/proxies/manually.yaml
+    interval: 300
+    health-check:
+      enable: true
+      url: http://www.youtube.com/generate_204
+      interval: 120
+proxy-groups:
+  - name: 节点选择
+    type: select
+    proxies:
+      - chain
+      - daily-lb
+      - daily-select
+      - dongtaiwang-misaka-hy-lb
+      - cloudflare
+      - domain-se
+      - linkvws
+      - rules-lb
+      - rules-se
+      - test-select
+      - test-lb
+      - manually
+      - lunes.pyptom@hotmail
+      - BPB
+      - toys
+      - toys-se
+  - name: 入口选择
+    type: select
+    url: http://www.google.com/generate_204
+    interval: 60
+    proxies:
+      - dongtaiwang-misaka-hy-lb
+      - domain-lb
+      - domain-se
+      - rules-lb
+      - rules-se
+      - linkvws
+      - test-select
+      - test-lb
+      - manually
+      - lunes.pyptom@hotmail
+      - BPB
+      - toys
+      - toys-se
+  - name: 出口选择
+    type: select
+    proxies:
+      - rules-lb
+      - rules-se
+      - toys
+      - toys-se
+      - cloudflare
+      - test-select
+      - manually
+      - lunes.pyptom@hotmail
+      - BPB
+  - name: domain-se
+    type: select
+    url: http://www.google.com/generate_204
+    interval: 120
+    use:
+      - dd24-sub
+  - name: test-select
+    type: select
+    url: http://www.google.com/generate_204
+    interval: 120
+    # exclude-filter: "@tls|xinyex"
+    use:
+      - test-local
+      - test-local-yaml
+  - name: test-lb
+    type: load-balance
+    strategy: round-robin
+    url: http://www.google.com/generate_204
+    interval: 120
+    # filter: "@tls|xinyex"
+    use:
+      - test-local
+      - test-local-yaml
+  - name: linkvws
+    type: load-balance
+    strategy: round-robin
+    url: http://www.google.com/generate_204
+    interval: 120
+    use:
+      - linkvws-sub
+  - name: dongtaiwang-misaka-hy-lb
+    type: load-balance
+    strategy: round-robin
+    url: http://www.google.com/generate_204
+    interval: 300
+    use:
+      - dongtaiwang-misaka-hy
+  - name: rules-lb
+    type: load-balance
+    strategy: round-robin
+    exclude-filter: "glitch"
+    url: http://www.google.com/generate_204
+    interval: 300
+    use:
+      - rules-sub
+  - name: rules-se
+    type: select
+    url: http://www.google.com/generate_204
+    interval: 300
+    use:
+      - rules-sub
+  - name: toys
+    type: load-balance
+    strategy: round-robin
+    url: http://www.google.com/generate_204
+    interval: 300
+    use:
+      - toys-sub
+  - name: toys-se
+    type: select
+    url: http://www.google.com/generate_204
+    interval: 300
+    use:
+      - toys-sub
+  - name: cloudflare
+    type: load-balance
+    strategy: round-robin
+    url: http://www.google.com/generate_204
+    interval: 300
+    use:
+      - cloudflare-sub
+  - name: domain-lb
+    type: load-balance
+    strategy: round-robin
+    url: http://www.google.com/generate_204
+    interval: 300
+    use:
+      - dd24-sub
+  - name: daily-lb
+    type: load-balance
+    strategy: round-robin
+    url: http://www.google.com/generate_204
+    interval: 120
+    use:
+      - daily-local
+      - daily-local-yaml
+  - name: daily-select
+    type: select
+    url: http://www.google.com/generate_204
+    interval: 120
+    use:
+      - daily-local
+      - daily-local-yaml
+  - name: manually
+    type: select
+    url: http://www.google.com/generate_204
+    interval: 120
+    use:
+      - manually-local
+      - manually-local-yaml
+  - name: chain
+    type: relay
+    proxies:
+      - 入口选择
+      - 出口选择
+rule-providers:
+  gfw:
+    type: http
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt
+    path: ./profiles/rules/gfw.yaml
+    interval: 86400
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegramcidr.txt
+    path: ./ruleset/telegramcidr.yaml
+    interval: 86400
+rules:
+  - DOMAIN-SUFFIX,waditu.com,DIRECT
+  - IP-CIDR,8.140.225.0/24,DIRECT
+  - RULE-SET,gfw,节点选择
+  - RULE-SET,telegramcidr,节点选择
+  - GEOSITE,google,节点选择
+  - DOMAIN-SUFFIX,speedtest.net,节点选择
+  - GEOSITE,cn,DIRECT
+  - GEOIP,CN,DIRECT
+  - GEOIP,LAN,DIRECT
+  - GEOIP,lan,DIRECT,no-resolve
+  - MATCH,节点选择
