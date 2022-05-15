@@ -1,0 +1,16 @@
+proxies:
+  - {"name":"🇺🇸 hy2_01","type":"hysteria2","server":"51.159.2.179","port":23499,"password":"dongtaiwang.com","sni":"www.bing.com","skip-cert-verify":true}
+  - {"name":"🇺🇸 hy2_02","type":"hysteria2","server":"109.104.152.89","port":22441,"password":"dongtaiwang.com","sni":"www.bing.com","skip-cert-verify":true}
+  - {"name":"🇺🇸 hy2_03","type":"hysteria2","server":"104.192.224.141","port":36252,"password":"dongtaiwang.com","sni":"www.bing.com","skip-cert-verify":true}
+  - {"name":"dong-h2-01","type":"hysteria2","server":"104.192.224.140","port":40391,"password":"dongtaiwang.com","sni":"www.bing.com","skip-cert-verify":true}
+  - {"name":"dong-h2-02","type":"hysteria2","server":"62.210.103.0","port":22483,"password":"dongtaiwang.com","sni":"www.bing.com","skip-cert-verify":true}
+  - {"name":"dong-h2-03","type":"hysteria2","server":"51.159.77.153","port":33390,"password":"dongtaiwang.com","sni":"www.bing.com","skip-cert-verify":true}
+  - {"name":"dong-h1-01","type":"hysteria","server":"108.181.5.133","port":26022,"sni":"bing.com","skip-cert-verify":true,"alpn":["h3"],"protocol":"udp","auth_str":"dongtaiwang.com","up":11,"down":55}
+  - {"name":"dong-h1-02","type":"hysteria","server":"62.210.243.131","port":18702,"sni":"bing.com","skip-cert-verify":true,"alpn":["h3"],"protocol":"udp","auth_str":"dongtaiwang.com","up":11,"down":55}
+  - {"name":"dong-h1-03","type":"hysteria","server":"109.104.152.194","port":58510,"sni":"bing.com","skip-cert-verify":true,"alpn":["h3"],"protocol":"udp","auth_str":"dongtaiwang.com","up":11,"down":55}
+  - {"name":"dong-h1-04","type":"hysteria","server":"108.181.5.22","port":44557,"sni":"bing.com","skip-cert-verify":true,"alpn":["h3"],"protocol":"udp","auth_str":"dongtaiwang.com","up":11,"down":55}
+  - {"name":"dong-h1-s1","type":"hysteria","server":"173.234.25.50","port":1992,"sni":"bing.com","skip-cert-verify":true,"alpn":["h3"],"protocol":"udp","auth_str":"dongtaiwang.com","up":11,"down":55}
+  - {"name":"dong-h1-s2","type":"hysteria","server":"104.192.224.139","port":42113,"sni":"bing.com","skip-cert-verify":true,"alpn":["h3"],"protocol":"udp","auth_str":"dongtaiwang.com","up":50,"down":100}
+  - {"name":"dong-h1-s3","type":"hysteria","server":"23.170.40.77","port":30009,"sni":"bing.com","skip-cert-verify":true,"alpn":["h3"],"protocol":"udp","up":50,"down":100}
+  - {"name":"dong-tuic-01","type":"tuic","server":"74.63.233.74","port":33441,"password":"dongtaiwang.com","uuid":"a258065f-9502-4fe6-b3ed-cf7440e25150","skip-cert-verify":true,"alpn":["h3"],"congestion_control":"bbr"}
+  - {"name":"dong-tuic-02","type":"tuic","server":"www2.dtku44.xyz","port":11224,"password":"dongtaiwang.com","uuid":"285524a5-18ae-4bf4-8e89-473dfdc3a212","skip-cert-verify":true,"alpn":["h3"],"congestion_control":"bbr"}
