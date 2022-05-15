@@ -1,0 +1,353 @@
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: debug
+ipv6: true
+external-controller: 127.0.0.1:9090
+geox-url:
+  geoip: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
+  geosite: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
+  mmdb: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.metadb"
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  enhanced-mode: fake-ip
+  nameserver:
+    - 8.8.8.8
+    - 1.1.1.1
+    - 119.29.29.29
+    - 223.5.5.5
+proxies:
+  - {name: lunes, type: vless, server: node4.lunes.host, port: 1130, uuid: 8c94dfd8-52dd-451c-8c85-26770cd41768, network: ws, ws-path: /vless, ws-headers: {Host: node4.lunes.host}}
+  - {name: b4a, type: vless, server: nodejs.pyptom.cloudns.biz, port: 443, uuid: 8c94dfd8-52dd-451c-8c85-26770cd41768, tls: true, network: ws, skip-cert-verify: true, ws-path: /vless, ws-headers: {Host: nodejs.pyptom.cloudns.biz}}
+  - name: warp
+    type: wireguard
+    server: 188.114.98.107
+    port: 894
+    udp: true
+    ip: 172.16.0.2/32
+    mtu: 1280
+    public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=
+    private-key: GERtPoeO4uvbCFMNEmE2E5uNpmjvkraMiM11E7nawnE=
+    remote-dns-resolve: true
+    dns: [ 1.1.1.1, 8.8.8.8 ]
+  - name: baipaovpn-v4
+    type: vmess
+    server: 80.71.157.105
+    port: 443
+    uuid: b656b441-2cfd-44b8-9b2e-646e9925f8f6
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: 80.71.157.105
+  - name: baipaovpn-v6
+    type: vmess
+    server: 2a09:7c42:0:83::1
+    port: 443
+    uuid: b656b441-2cfd-44b8-9b2e-646e9925f8f6
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: 2a09:7c42:0:83::1
+  - name: linkvws-149.7.16.114
+    type: vmess
+    server: 149.7.16.114
+    port: 443
+    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    network: ws
+    ws-opts:
+      path: /linkvws
+      headers:
+        Host: 149.7.16.114
+  - name: linkvws-149.7.16.70
+    type: vmess
+    server: 149.7.16.70
+    port: 443
+    uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    network: ws
+    ws-opts:
+      path: /linkvws
+      headers:
+        Host: 149.7.16.70
+  - name: rx2-ipv6-01
+    type: vmess
+    server: 2607:5300:205:300::14c
+    port: 443
+    uuid: 58fe1542-5290-40ad-815a-77707a81afe5
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    network: ws
+    ws-opts:
+      path: /IOebhLMhl1CTbFHbL95myfRX2
+      headers:
+        Host: 2607:5300:205:300::14c
+  - name: rx2-ipv6-02
+    type: vmess
+    server: 2607:5300:205:300::ebe
+    port: 443
+    uuid: 58fe1542-5290-40ad-815a-77707a81afe5
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    network: ws
+    ws-opts:
+      path: /IOebhLMhl1CTbFHbL95myfRX2
+      headers:
+        Host: 2607:5300:205:300::ebe
+  - name: rx2-ipv6-03
+    type: vmess
+    server: 2607:5300:205:300::340
+    port: 443
+    uuid: 58fe1542-5290-40ad-815a-77707a81afe5
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    network: ws
+    ws-opts:
+      path: /IOebhLMhl1CTbFHbL95myfRX2
+      headers:
+        Host: 2607:5300:205:300::340
+proxy-providers:
+  test-local-out:
+    type: file
+    path: ./profiles/proxies/test.64
+    exclude-filter: "@tls"
+    health-check:
+      enable: true
+      url: http://www.youtube.com/generate_204
+      interval: 120
+  test-local-in:
+    type: file
+    path: ./profiles/proxies/test.64
+    filter: "@tls"
+    health-check:
+      enable: true
+      url: http://www.youtube.com/generate_204
+      interval: 120
+  freenode-sub:
+    type: http
+    path: ./profiles/proxies/freenode.yaml
+    url: https://raw.githubusercontent.com/freenodes/freenodes/main/clash.yaml
+    exclude-type: "vless|wireguard|ss|trojan|ssr"
+    interval: 3600
+    health-check:
+      enable: true
+      url: http://www.google.com/generate_204
+      interval: 300
+  rules-sub:
+    type: http
+    path: ./profiles/proxies/my-rules.yaml
+    url: https://raw.githubusercontent.com/pyptom76/pyptom76/main/rules.64
+    interval: 86400
+    health-check:
+      enable: true
+      url: http://www.google.com/generate_204
+      interval: 300
+  toys-sub:
+    type: http
+    path: ./profiles/proxies/my-raw.yaml
+    exclude-filter: "back4app"
+    url: https://raw.githubusercontent.com/pyptom76/pyptom76/main/raw.64
+    interval: 86400
+    health-check:
+      enable: true
+      url: http://www.google.com/generate_204
+      interval: 300
+  cloudflare-sub:
+    type: http
+    path: ./profiles/proxies/my-cloudflare.yaml
+    url: https://raw.githubusercontent.com/pyptom76/pyptom76/main/cloudflare.64
+    interval: 86400
+    health-check:
+      enable: true
+      url: http://www.google.com/generate_204
+      interval: 300
+  domain-sub:
+    type: http
+    path: ./profiles/proxies/my-domain.yaml
+    url: https://raw.githubusercontent.com/pyptom76/pyptom76/main/domain.64
+    exclude-filter: "v6"
+    interval: 86400
+    health-check:
+      enable: true
+      url: http://www.google.com/generate_204
+      interval: 300
+  dongtaiwang-sub:
+    type: http
+    path: ./profiles/proxies/dongtaiwang.yaml
+    url: https://raw.githubusercontent.com/pyptom76/pyptom76/main/dongtaiwang.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      url: http://www.google.com/generate_204
+      interval: 60
+  dongtaiwang-misaka-hy:
+    type: http
+    exclude-type: "vmess|vless|wireguard|ss|trojan|ssr"
+    path: ./profiles/proxies/dongtaiwang-misaka.yaml
+    url: https://raw.githubusercontent.com/Misaka-blog/chromego_merge/main/sub/merged_proxies_new.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      url: http://www.google.com/generate_204
+      interval: 300
+proxy-groups:
+  - name: 节点选择
+    type: select
+    proxies:
+      - chain
+      - warp
+      - dongtaiwang
+      - cloudflare
+      - freenode
+      - domain-se
+      - rules
+      - test-tls
+  - name: 出口选择
+    type: select
+    proxies:
+      - toys
+      - cloudflare
+      - freenode
+      - test-non-tls
+      - linkvws-149.7.16.114
+  - name: 入口选择
+    type: select
+    url: http://www.google.com/generate_204
+    interval: 60
+    proxies:
+      - dongtaiwang
+      - dongtaiwang-misaka-hy-lb
+      - domain-lb
+      - domain-se
+      - test-tls
+  - name: freenode
+    # type: url-test
+    # url: http://www.google.com/generate_204
+    # interval: 3600
+    type: select
+    use:
+      - freenode-sub
+  - name: rules
+    type: load-balance
+    strategy: round-robin
+    exclude-filter: "glitch"
+    url: http://www.google.com/generate_204
+    interval: 3600
+    use:
+      - rules-sub
+  - name: toys
+    type: load-balance
+    strategy: round-robin
+    url: http://www.google.com/generate_204
+    interval: 3600
+    use:
+      - toys-sub
+  - name: cloudflare
+    type: load-balance
+    strategy: round-robin
+    url: http://www.google.com/generate_204
+    interval: 3600
+    use:
+      - cloudflare-sub
+  - name: domain-lb
+    type: load-balance
+    strategy: round-robin
+    url: http://www.google.com/generate_204
+    interval: 300
+    use:
+      - domain-sub
+    proxies:
+      - rx2-ipv6-01
+      - rx2-ipv6-02
+      - rx2-ipv6-03
+  - name: domain-se
+    type: select
+    use:
+      - domain-sub
+    proxies:
+      - rx2-ipv6-01
+      - rx2-ipv6-02
+      - rx2-ipv6-03
+  - name: dongtaiwang
+    type: load-balance
+    strategy: round-robin
+    url: http://www.google.com/generate_204
+    interval: 300
+    use:
+      - dongtaiwang-sub
+  - name: dongtaiwang-misaka-hy-lb
+    type: load-balance
+    strategy: round-robin
+    url: http://www.google.com/generate_204
+    interval: 300
+    use:
+      - dongtaiwang-misaka-hy
+  - name: test-non-tls
+    type: select
+    # strategy: round-robin
+    url: http://www.google.com/generate_204
+    interval: 120
+    use:
+      - test-local-out
+  - name: test-tls
+    type: select
+    # strategy: round-robin
+    # url: http://www.google.com/generate_204
+    # interval: 120
+    use:
+      - test-local-in
+    proxies:
+      - linkvws-149.7.16.70
+      - baipaovpn-v4
+      - baipaovpn-v6
+  - name: chain
+    type: relay
+    proxies:
+      - 入口选择
+      - 出口选择
+rule-providers:
+  gfw:
+    type: http
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt
+    path: ./profiles/rules/gfw.yaml
+    interval: 86400
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegramcidr.txt
+    path: ./ruleset/telegramcidr.yaml
+    interval: 86400
+rules:
+  - RULE-SET,gfw,节点选择
+  - RULE-SET,telegramcidr,节点选择
+  - GEOSITE,google,节点选择
+  - DOMAIN-SUFFIX,speedtest.net,节点选择
+  - GEOSITE,cn,DIRECT
+  - GEOIP,CN,DIRECT
+  - GEOIP,LAN,DIRECT
+  - GEOIP,lan,DIRECT,no-resolve
+  - MATCH,节点选择

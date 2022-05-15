@@ -1,0 +1,137 @@
+proxies:
+  - name: dong-h2-01
+    type: hysteria2
+    server: 64.110.25.11
+    port: 33337
+    password: dongtaiwang.com
+    sni: www.bing.com
+    skip-cert-verify: true
+  - name: dong-h2-02
+    type: hysteria2
+    server: 62.210.103.0
+    port: 22483
+    password: dongtaiwang.com
+    sni: www.bing.com
+    skip-cert-verify: true
+  - name: dong-h2-03
+    type: hysteria2
+    server: 62.210.103.0
+    port: 22483
+    password: dongtaiwang.com
+    sni: www.bing.com
+    skip-cert-verify: true
+  - name: dong-h2-04
+    type: hysteria2
+    server: 51.159.77.198
+    port: 53967
+    password: dongtaiwang.com
+    sni: www.bing.com
+    skip-cert-verify: true
+  - name: dong-h1-01
+    type: hysteria
+    server: 51.158.54.46
+    port: 55396
+    auth_str: dongtaiwang.com
+    alpn:
+      - h3
+    protocol: udp
+    up: 11
+    down: 55
+    sni: youku.com
+    skip-cert-verify: true
+    recv_window_conn: 5767168
+    recv_window: 23068672
+    disable_mtu_discovery: true
+    fast-open: true
+  - name: dong-h1-02
+    type: hysteria
+    server: 167.160.91.115
+    port: 41189
+    auth_str: bWAwIqINo7XDm1fUlXQGBifVIXoYs1ylgVKqWFKzK1XyDKuwNF
+    alpn:
+      - h3
+    protocol: udp
+    up: 11
+    down: 55
+    sni: www.amazon.cn
+    skip-cert-verify: true
+    recv_window_conn: 5767168
+    recv_window: 23068672
+    disable_mtu_discovery: true
+    fast-open: true
+  - name: dong-h1-03
+    type: hysteria
+    server: 173.234.25.52
+    port: 48919
+    auth_str: dongtaiwang.com
+    alpn:
+      - h3
+    protocol: udp
+    up: 11
+    down: 55
+    sni: bing.com
+    skip-cert-verify: true
+    recv_window_conn: 5767168
+    recv_window: 23068672
+    disable_mtu_discovery: true
+    fast-open: true
+  - name: dong-h1-04
+    type: hysteria
+    server: www.dtku40.xyz
+    port: 18490
+    auth_str: dongtaiwang.com
+    alpn:
+      - h3
+    protocol: udp
+    up: 11
+    down: 55
+    sni: bing.com
+    skip-cert-verify: true
+    recv_window_conn: 5767168
+    recv_window: 23068672
+    disable_mtu_discovery: true
+    fast-open: true
+  - name: dong-h1-s1
+    type: hysteria
+    server: 173.234.25.50
+    port: 1992
+    auth_str: dongtaiwang.com
+    alpn:
+      - h3
+    protocol: udp
+    up: 11
+    down: 55
+    sni: bing.com
+    skip-cert-verify: true
+    recv_window_conn: 5767168
+    recv_window: 23068672
+    disable_mtu_discovery: true
+    fast-open: true
+  - name: dong-h1-s2
+    type: hysteria
+    server: www.dtku50.xyz
+    port: 11229
+    auth-str: dongtaiwang.com
+    sni: bing.com
+    alpn:
+      - h3
+    protocol: udp
+    up: "50 Mbps"
+    down: "100 Mbps"
+    skip-cert-verify: true
+    recv_window_conn: 5767168
+    recv_window: 23068672
+    disable_mtu_discovery: true
+  - name: dong-tuic
+    server: sing2.dtku47.xyz
+    port: 55667
+    type: tuic
+    uuid: 2dca51f2-8968-479b-b086-4a62269f3f37
+    password: dongtaiwang
+    alpn: [h3]
+    disable-sni: true
+    reduce-rtt: true
+    udp-relay-mode: native
+    congestion-controller: bbr
+    skip-cert-verify: true
+    sni: sing2.dtku47.xyz

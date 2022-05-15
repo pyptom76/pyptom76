@@ -1,0 +1,113 @@
+proxies:
+  - name: rule-lunes-pyptom-outlook
+    type: vless
+    server: lunes.pyptom.tk
+    port: 443
+    uuid: 8c94dfd8-52dd-451c-8c85-26770cd41768
+    udp: true
+    tls: true
+    network: ws
+    servername: lunes.pyptom.tk # priority over wss host
+    skip-cert-verify: true
+    ws-opts:
+      path: "/vless"
+      headers:
+        Host: lunes.pyptom.tk
+  - name: rule-lunes-pyptom-hotmail
+    type: vless
+    server: lunes.n61388365.cf
+    port: 443
+    uuid: 8c94dfd8-52dd-451c-8c85-26770cd41768
+    udp: true
+    tls: true
+    network: ws
+    servername: lunes.n61388365.cf # priority over wss host
+    skip-cert-verify: true
+    ws-opts:
+      path: "/vless"
+      headers:
+        Host: lunes.n61388365.cf
+  - name: rule-bh-pyptom
+    type: vless
+    server: bh.pyptom.tk
+    port: 443
+    uuid: 8c94dfd8-52dd-451c-8c85-26770cd41768
+    udp: true
+    tls: true
+    network: ws
+    servername: bh.pyptom.tk # priority over wss host
+    skip-cert-verify: true
+    ws-opts:
+      path: "/vless"
+      headers:
+        Host: bh.pyptom.tk
+  - name: rule-bh-n61388365
+    type: vless
+    server: bh.n61388365.cf
+    port: 443
+    uuid: 8c94dfd8-52dd-451c-8c85-26770cd41768
+    udp: true
+    tls: true
+    network: ws
+    servername: bh.n61388365.cf # priority over wss host
+    skip-cert-verify: true
+    ws-opts:
+      path: "/vless"
+      headers:
+        Host: bh.n61388365.cf
+  - name: rule-optik-pyptom
+    type: vless
+    server: optik.pyptom.tk
+    port: 443
+    uuid: 8c94dfd8-52dd-451c-8c85-26770cd41768
+    udp: true
+    tls: true
+    network: ws
+    servername: optik.pyptom.tk # priority over wss host
+    skip-cert-verify: true
+    ws-opts:
+      path: "/vless"
+      headers:
+        Host: optik.pyptom.tk
+  - name: rule-optik-n61388365
+    type: vless
+    server: optik.n61388365.cf
+    port: 443
+    uuid: 8c94dfd8-52dd-451c-8c85-26770cd41768
+    udp: true
+    tls: true
+    network: ws
+    servername: optik.n61388365.cf # priority over wss host
+    skip-cert-verify: true
+    ws-opts:
+      path: "/vless"
+      headers:
+        Host: optik.n61388365.cf
+  - name: rule-waifly
+    type: vless
+    server: wf.pyptom.tk
+    port: 443
+    uuid: 8c94dfd8-52dd-451c-8c85-26770cd41768
+    udp: true
+    tls: true
+    network: ws
+    servername: wf.pyptom.tk # priority over wss host
+    skip-cert-verify: true
+    ws-opts:
+      path: "/vless"
+      headers:
+        Host: wf.pyptom.tk
+  - name: rule-ser00
+    type: vless
+    server: srv.n61388365.cf
+    port: 443
+    uuid: 8c94dfd8-52dd-451c-8c85-26770cd41768
+    udp: true
+    tls: true
+    network: ws
+    servername: srv.n61388365.cf # priority over wss host
+    skip-cert-verify: true
+    ws-opts:
+      path: "/vless"
+      headers:
+        Host: srv.n61388365.cf
