@@ -1,0 +1,12 @@
+vless://8c94dfd8-52dd-451c-8c85-26770cd41768@bh.n61388365.cloudns.org:443?encryption=none&security=tls&sni=bh.n61388365.cloudns.org&type=ws&host=bh.n61388365.cloudns.org&path=%2Fvless#rule.bothosting.n61388365
+vless://8c94dfd8-52dd-451c-8c85-26770cd41768@bh.pyptom.cloudns.biz:443?encryption=none&security=tls&type=ws&host=bh.pyptom.cloudns.biz&path=%2Fvless#rule.bothosting.pyptom
+vless://8c94dfd8-52dd-451c-8c85-26770cd41768@lunes.n61388365.cloudns.org:443?encryption=none&security=tls&sni=lunes.n61388365.cloudns.org&type=ws&host=lunes.n61388365.cloudns.org&path=%2Fvless#rule.lunes.n6138365
+vless://8c94dfd8-52dd-451c-8c85-26770cd41768@lunes.pyptom.cloudns.biz:443?encryption=none&security=tls&sni=lunes.pyptom.cloudns.biz&type=ws&host=lunes.pyptom.cloudns.biz&path=%2Fvless#rule.lunes.pyptom%40outlook
+vless://8c94dfd8-52dd-451c-8c85-26770cd41768@optik.n61388365.cloudns.org:443?encryption=none&security=tls&sni=optik.n61388365.cloudns.org&type=ws&host=optik.n61388365.cloudns.org&path=%2Fvless#rule.optik.n61388365
+vless://8c94dfd8-52dd-451c-8c85-26770cd41768@optik.pyptom.cloudns.biz:443?encryption=none&security=tls&sni=optik.pyptom.cloudns.biz&type=ws&host=optik.pyptom.cloudns.biz&path=%2Fvless#rule.optik.pyptom
+vless://8c94dfd8-52dd-451c-8c85-26770cd41768@sr00.n61388365.cloudns.org:443?encryption=none&security=tls&type=ws&host=sr00.n61388365.cloudns.org&path=%2Fvless#rule.ser00.n61388365
+vless://8c94dfd8-52dd-451c-8c85-26770cd41768@sillydev.n61388365.cloudns.org:443?encryption=none&security=tls&type=ws&host=sillydev.n61388365.cloudns.org&path=%2Fvless#rule.sillydev.n61388365
+vless://8c94dfd8-52dd-451c-8c85-26770cd41768@sillydev.pyptom.cloudns.biz:443?encryption=none&security=tls&type=ws&host=sillydev.pyptom.cloudns.biz&path=%2Fvless#rule.sillydev.pyptom
+vless://8c94dfd8-52dd-451c-8c85-26770cd41768@waifly.n61388365.cloudns.org:443?encryption=none&security=tls&type=ws&host=waifly.n61388365.cloudns.org&path=%2Fvless#rule.waifly.n61388365
+vless://8c94dfd8-52dd-451c-8c85-26770cd41768@glitch.pyptom.cloudns.org:443?encryption=none&security=tls&type=ws&host=glitch.pyptom.cloudns.org&path=%2F#rules.b4a
+vless://8c94dfd8-52dd-451c-8c85-26770cd41768@b4a.pyptom76.workers.dev:443?encryption=none&security=tls&type=ws&host=b4a.pyptom76.workers.dev&path=%2F#rules.b4a%20dev
